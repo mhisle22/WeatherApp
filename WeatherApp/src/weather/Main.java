@@ -15,9 +15,11 @@ public class Main extends Application
 		{
 			
 			FXMLLoader loader = new FXMLLoader(MainWindowController.class.getResource("MainWindow.fxml"));
+			MainWindowController cont = loader.getController();
 			
 			Scene scene = new Scene(loader.load());			
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Weather");
 			primaryStage.show();
 			
 		} 

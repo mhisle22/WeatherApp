@@ -17,19 +17,20 @@ import com.google.gson.reflect.*;
 
 public class WeatherData 
 {
-	
+	//make the API data something actually usable
 	public static Map<String, Object> jsonToMap(String str)
 	{
 		Map<String, Object> map = new Gson().fromJson(str, new TypeToken<HashMap<String, Object>>(){}.getType());
 		return map;
 	}
 
-	public static void main(String[] args) 
+	//retrieve data
+	public static boolean weatherData(String city, String units, String[] dates, String[] forecast, String[] current, String label) 
 	{
 		//parameters for API call
-		String API_KEY = "6fc10287d6a656731ef6c8ada7d764e8";
-		String LOCATION = "London,uk";
-		String UNITS = "imperial";
+		String API_KEY = "6fc10287d6a656731ef6c8ada7d764e8"; //if someone is reading this, please don't steal my key :)
+		String LOCATION = city;
+		String UNITS = units;
 		String urlString = "http://api.openweathermap.org/data/2.5/forecast?q=" + LOCATION + "&appid=" + API_KEY + 
 				"&units=" + UNITS;
 		
@@ -55,18 +56,23 @@ public class WeatherData
 			
 		//format data out of json format
 		Map<String, Object> respMap = jsonToMap(result.toString());
-			
+		
+		//check if this worked
+		if(respMap == null)
+		{
+			return false;
+		}
 		
 		//CURRENT WEATHER
-		System.out.println("RespMap: "+ respMap.toString());
+		//System.out.println("RespMap: "+ respMap.toString());
 		String main = respMap.get("list").toString();
 		String weather = respMap.get("list").toString();
 		main = main.substring(main.indexOf("main"), main.indexOf("weather"));
 		weather = weather.substring(weather.indexOf("weather"), weather.indexOf("dt_txt=" + 20));
 			
 		//this is where we get the info. Whatever the json map is, it's useless from here on
-		System.out.println(main);
-		System.out.println(weather);
+		//System.out.println(main);
+		//System.out.println(weather);
 		
 		String temp = main.substring(main.indexOf("temp=") + 5, main.indexOf(",")); // + 5 to index past text
 		String desc = weather.substring(weather.indexOf("main="), weather.length());
@@ -76,12 +82,15 @@ public class WeatherData
 		String wind = weather.substring(weather.indexOf("wind={speed="), weather.length());
 		wind = wind.substring(wind.indexOf("=") + 8, wind.indexOf(",")); // + 8 to index past text
 		
-		System.out.println("\nWeather in " + LOCATION + "\n");
-		
+		/*System.out.println("\nWeather in " + LOCATION + "\n");
 		System.out.println("Current Temperature: " + temp);
 		System.out.println("Current Humidity: " + hum);
 		System.out.println("Wind Speeds: " + wind);
-		System.out.println("Description: " + desc);
+		System.out.println("Description: " + desc);*/
+		current[0] = temp;
+		current[1] = hum;
+		current[2] = wind;
+		current[3] = desc;
 		
 		//now for 5-day forecast
 		String day1, day2, day3, day4, day5;
@@ -100,7 +109,11 @@ public class WeatherData
 		day4 = dateFormat.format(calendar.getTime());
 		calendar.add(Calendar.DAY_OF_YEAR, 1);
 		day5 = dateFormat.format(calendar.getTime());
-		//System.out.println("Days: " + day1 + day2 + day3 + day4 + day5);
+		dates[0] = day1;
+		dates[1] = day2;
+		dates[2] = day3;
+		dates[3] = day4;
+		dates[4] = day5;
 		
 		//DAY 1
 		String currentDate, morning, afternoon, evening, night;
@@ -151,13 +164,19 @@ public class WeatherData
 		wind = wind.substring(wind.indexOf("=") + 8, wind.indexOf(",")); // + 8 to index past text
 		
 		//display
-		System.out.println("\nForecast on: " + day1);
+		/*System.out.println("\nForecast on: " + day1);
 		System.out.println("Morning: " + mornTemp + ", " + mornDesc);
 		System.out.println("Afternoon: " + afterTemp + ", " + afterDesc);
 		System.out.println("Evening: " + evenTemp + ", " + evenDesc);
 		System.out.println("Night: " + nightTemp + ", " + nightDesc);
 		System.out.println("Humidity: " + hum);
-		System.out.println("Wind Speeds: " + wind);
+		System.out.println("Wind Speeds: " + wind);*/
+		forecast[0] = mornTemp + label + " , " + mornDesc;
+		forecast[1] = afterTemp + label + " , " + afterDesc;
+		forecast[2] = evenTemp + label + " , " + evenDesc;
+		forecast[3] = nightTemp + label + " , " + nightDesc;
+		forecast[4] = hum;
+		forecast[5] = wind;
 		
 		//DAY 2
 		//get data for date
@@ -206,13 +225,19 @@ public class WeatherData
 		wind = wind.substring(wind.indexOf("=") + 8, wind.indexOf(",")); // + 8 to index past text
 				
 		//display
-		System.out.println("\nForecast on: " + day2);
+		/*System.out.println("\nForecast on: " + day2);
 		System.out.println("Morning: " + mornTemp + ", " + mornDesc);
 		System.out.println("Afternoon: " + afterTemp + ", " + afterDesc);
 		System.out.println("Evening: " + evenTemp + ", " + evenDesc);
 		System.out.println("Night: " + nightTemp + ", " + nightDesc);
 		System.out.println("Humidity: " + hum);
-		System.out.println("Wind Speeds: " + wind);
+		System.out.println("Wind Speeds: " + wind);*/
+		forecast[6] = mornTemp + label + " , " + mornDesc;
+		forecast[7] = afterTemp + label + " , " + afterDesc;
+		forecast[8] = evenTemp + label + " , " + evenDesc;
+		forecast[9] = nightTemp + label + " , " + nightDesc;
+		forecast[10] = hum;
+		forecast[11] = wind;
 		
 		//DAY 3
 		//get data for date
@@ -261,13 +286,19 @@ public class WeatherData
 		wind = wind.substring(wind.indexOf("=") + 8, wind.indexOf(",")); // + 8 to index past text
 				
 		//display
-		System.out.println("\nForecast on: " + day3);
+		/*System.out.println("\nForecast on: " + day3);
 		System.out.println("Morning: " + mornTemp + ", " + mornDesc);
 		System.out.println("Afternoon: " + afterTemp + ", " + afterDesc);
 		System.out.println("Evening: " + evenTemp + ", " + evenDesc);
 		System.out.println("Night: " + nightTemp + ", " + nightDesc);
 		System.out.println("Humidity: " + hum);
-		System.out.println("Wind Speeds: " + wind);
+		System.out.println("Wind Speeds: " + wind);*/
+		forecast[12] = mornTemp + label + " , " + mornDesc;
+		forecast[13] = afterTemp + label + " , " + afterDesc;
+		forecast[14] = evenTemp + label + " , " + evenDesc;
+		forecast[15] = nightTemp + label + " , " + nightDesc;
+		forecast[16] = hum;
+		forecast[17] = wind;
 		
 		//DAY 4
 		//get data for date
@@ -316,13 +347,19 @@ public class WeatherData
 		wind = wind.substring(wind.indexOf("=") + 8, wind.indexOf(",")); // + 8 to index past text
 				
 		//display
-		System.out.println("\nForecast on: " + day4);
+		/*System.out.println("\nForecast on: " + day4);
 		System.out.println("Morning: " + mornTemp + ", " + mornDesc);
 		System.out.println("Afternoon: " + afterTemp + ", " + afterDesc);
 		System.out.println("Evening: " + evenTemp + ", " + evenDesc);
 		System.out.println("Night: " + nightTemp + ", " + nightDesc);
 		System.out.println("Humidity: " + hum);
-		System.out.println("Wind Speeds: " + wind);
+		System.out.println("Wind Speeds: " + wind);*/
+		forecast[18] = mornTemp + label + " , " + mornDesc;
+		forecast[19] = afterTemp + label + " , " + afterDesc;
+		forecast[20] = evenTemp + label + " , " + evenDesc;
+		forecast[21] = nightTemp + label + " , " + nightDesc;
+		forecast[22] = hum;
+		forecast[23] = wind;
 		
 		//DAY 5
 		//NOTE: Only morning and afternoon are available. Ask the OWM people
@@ -358,15 +395,21 @@ public class WeatherData
 		wind = wind.substring(wind.indexOf("=") + 8, wind.indexOf(",")); // + 8 to index past text
 				
 		//display
-		System.out.println("\nForecast on: " + day5);
+		/*System.out.println("\nForecast on: " + day5);
 		System.out.println("Morning: " + mornTemp + ", " + mornDesc);
 		System.out.println("Afternoon: " + afterTemp + ", " + afterDesc);;
 		System.out.println("Humidity: " + hum);
-		System.out.println("Wind Speeds: " + wind);
+		System.out.println("Wind Speeds: " + wind);*/
+		forecast[24] = mornTemp + label + " , " + mornDesc;
+		forecast[25] = afterTemp + label + " , " + afterDesc;
+		forecast[26] = evenTemp + label + " , " + evenDesc;
+		forecast[27] = nightTemp + label + " , " + nightDesc;
+		forecast[28] = hum;
+		forecast[29] = wind;
 		
 		
 				
-		return;	
+		return true;	
 	}
 
 }
