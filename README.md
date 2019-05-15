@@ -14,3 +14,7 @@ larger cities, but this program requires a code to be entered.
 To retrieve data, press the "Go" button after entering data. If a new unit
 system is desired after entering in a city, the Go button must be pressed again.
 OWP only provides data up to the afternoon of the 5th day.
+
+To reset data, simply enter in a new city into the text boxes and press Go again.
+
+The program can be executed through the included jar file.
