@@ -154,7 +154,7 @@ public class MainWindowController
     			unit = "imperial";
     			label = " °F";
     		}
-    		else if(unit.equals("Metric"))
+    		else if(unit.equals("Celsius"))
     		{
     			unit = "metric";
     			label = " °C";
@@ -228,8 +228,8 @@ public class MainWindowController
     		
     		morn5.setText(forecast[24]);
     		after5.setText(forecast[25]);
-    		evening5.setText(forecast[26]);
-    		night5.setText(forecast[27]);
+    		evening5.setText("-");
+    		night5.setText("-");
     		hum5.setText(forecast[28]+"%");
     		wind5.setText(forecast[29]);
     		
