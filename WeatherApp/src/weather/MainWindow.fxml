@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="pane" minHeight="550.0" minWidth="750.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="weather.MainWindowController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Button fx:id="goButton" layoutX="345.0" layoutY="36.0" mnemonicParsing="false" text="Go">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Button>
+    <ChoiceBox fx:id="unitBox" layoutX="621.0" layoutY="45.0">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ChoiceBox>
+    <TextField fx:id="cityBox" layoutX="27.0" layoutY="43.0" prefWidth="160.0" text="Enter a city name..." />
+    <ChoiceBox fx:id="countryBox" layoutX="233.0" layoutY="43.0">
+      <contextMenu>
+        <ContextMenu />
+      </contextMenu>
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ChoiceBox>
+    <Text layoutX="257.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Weather">
+      <font>
+        <Font name="System Bold" size="30.0" />
+      </font>
+    </Text>
+    <Text layoutX="76.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Temperature:">
+      <font>
+        <Font name="System Bold" size="14.0" fx:id="x1" />
+      </font>
+    </Text>
+    <Text font="$x1" layoutX="99.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Humidity:" />
+    <Text font="$x1" layoutX="456.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" />
+    <Text font="$x1" layoutX="454.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wind Speed:" />
+    <Text layoutX="227.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country Code">
+      <font>
+        <Font size="14.0" fx:id="x2" />
+      </font>
+    </Text>
+    <Text font="$x2" layoutX="642.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Units" />
+    <Text font="$x2" layoutX="33.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City Name" />
+    <Text font="$x1" layoutX="27.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x1" layoutX="27.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Afternoon" />
+    <Text font="$x1" layoutX="27.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Evening" />
+    <Text font="$x1" layoutX="27.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Night" />
+    <Text font="$x1" layoutX="27.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Humidity" />
+    <Text font="$x1" layoutX="27.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wind Speed" />
+    <Text layoutX="263.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5-Day Forecast">
+      <font>
+        <Font name="System Bold" size="32.0" />
+      </font>
+    </Text>
+    <Text font="$x1" layoutX="277.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x1" layoutX="159.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x1" layoutX="510.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x1" layoutX="392.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x1" layoutX="629.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text fx:id="currTemp" font="$x2" layoutX="277.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text fx:id="currHum" font="$x2" layoutX="277.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text fx:id="currDesc" font="$x2" layoutX="592.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text fx:id="currWind" font="$x2" layoutX="592.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="160.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="160.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="160.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="159.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="159.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="159.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="277.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="277.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="277.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="276.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="276.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="276.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="393.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="393.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="393.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="392.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="392.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="392.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="513.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="513.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="513.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="512.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="512.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="512.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="632.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="632.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="632.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="631.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="631.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+    <Text font="$x2" layoutX="631.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Morning" />
+  </children>
+</AnchorPane>
