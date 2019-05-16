@@ -17,7 +17,7 @@ OWP only provides data up to the afternoon of the 5th day.
 
 To reset data, simply enter in a new city into the text boxes and press Go again.
 
-The program can be executed through the included jar file.
+The program can be executed through the included exe file.
 
 E.x.- London,uk
     - Pensacola,us
