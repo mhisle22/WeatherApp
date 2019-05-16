@@ -22,3 +22,6 @@ The program can be executed through the included jar file.
 E.x.- London,uk
     - Pensacola,us
     - Paris,fr
+    
+Note: The graphics are somewhat off-center on certain Linux systems but appear
+normally on windows.
